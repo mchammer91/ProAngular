@@ -36,10 +36,16 @@ export class StoreComponent {
         this.changePage(1);
     }
 
-    get pageNumbers(): number[] {
-      return Array(Math.ceil(this.repository
-          .getProducts(this.selectedCategory).length / this.productsPerPage))
-              // interesting way of getting all page #s
-              .fill(0).map((x, i) => i + 1);
-    }
+    // get pageNumbers(): number[] {
+    //   return Array(Math.ceil(this.repository
+    //       .getProducts(this.selectedCategory).length / this.productsPerPage))
+    //           // interesting way of getting all page #s
+    //           .fill(0).map((x, i) => i + 1);
+    // }
+
+    // for using bad structural directive
+    get pageCount(): number {
+      return Math.ceil(this.repository
+          .getProducts(this.selectedCategory).length / this.productsPerPage)
+  }
 }
